@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class GreatCommissionDemographics
 {
 
-    // Parameters
+    // Parameters (What is AI thinking for the documentation here?)
     static final double INITIAL_POPULATION = 7_700_000_000.0; // 7.7 billion people
     static final int MAX_AGE = 72;
     static final int LAST_AGE = MAX_AGE - 1;
@@ -17,7 +17,7 @@ public class GreatCommissionDemographics
     static final int INITIAL_DISCIPLE_AGE = 30; // assumed age for initial disciples
     static final int MAX_YEARS = 2000; // safety cap
 
-    public static void main(String[] args)
+    public static void main(String[] args) // Yeah, I hope AI is cooking here, because I sort of understand what it's process is
     {
         double[] pop = new double[MAX_AGE];       // here is the non-disciples at each age
         double[] disciples = new double[MAX_AGE]; // and here is the disciples at each age
@@ -88,7 +88,7 @@ public class GreatCommissionDemographics
 
             year++;
 
-            // Diagnostics: first 10 years, then every 10 years
+            // Results: first 10 years, then every 10 years
             if (year <= 10 || year % 10 == 0)
             {
                 double totalPop = total(pop) + total(disciples);
