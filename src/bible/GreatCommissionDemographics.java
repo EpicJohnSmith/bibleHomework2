@@ -33,16 +33,16 @@ public class GreatCommissionDemographics
         int year = 0;
         while (year < MAX_YEARS)
         {
-            double totalPopBefore = total(pop) + total(disciples);
-            double totalDisciplesBefore = total(disciples);
+            double totalPop = total(pop) + total(disciples);
+            double totalDisciples = total(disciples);
 
-            // Check stop condition: everyone alive is a disciple (allow tiny epsilon for doubles)
-            if (totalDisciplesBefore + 1e-9 >= totalPopBefore)
-            {
-                double totalPop = total(pop) + total(disciples);
-                double totalDisciples = total(disciples);
-                System.out.printf("All living people are disciples after %d years.%n", year);
-                System.out.printf("Year %d: population=%.0f, disciples=%.0f%n", year, totalPop, totalDisciples);
+            // choose a saturation threshold (e.g., 99.9%)
+            double saturationThreshold = 0.995; // 99.9%
+
+            if (totalDisciples / totalPop >= saturationThreshold) {
+                System.out.printf("Saturation reached at year %d.%n", year);
+                System.out.printf("Year %d: population=%.0f; disciples=%.0f; pct=%.5f%n",
+                                  year, totalPop, totalDisciples, totalDisciples / totalPop);
                 break;
             }
 
@@ -88,13 +88,13 @@ public class GreatCommissionDemographics
 
             year++;
 
-            // Results: first 10 years, then every 70 years
-            if (year <= 10 || year % 70 == 0)
+            // Results: first 10 years, then every 10 years
+            if (year <= 10 || year % 10 == 0)
             {
-                double totalPop = total(pop) + total(disciples);
-                double totalDisciples = total(disciples);
+                double totalPop1 = total(pop) + total(disciples);
+                double totalDisciples1 = total(disciples);
                 System.out.printf("Year %4d: population=%.0f; disciples=%.0f; pct=%.4f%n",
-                        year, totalPop, totalDisciples, totalDisciples / totalPop);
+                        year, totalPop1, totalDisciples1, totalDisciples1 / totalPop1);
             }
         }
 
