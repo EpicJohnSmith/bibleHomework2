@@ -88,8 +88,8 @@ public class GreatCommissionDemographics
 
             year++;
 
-            // Results: first 10 years, then every 10 years
-            if (year <= 10 || year % 10 == 0)
+            // Results: first 10 years, then every 70 years
+            if (year <= 10 || year % 70 == 0)
             {
                 double totalPop = total(pop) + total(disciples);
                 double totalDisciples = total(disciples);
