@@ -39,8 +39,9 @@ public class GreatCommissionDemographics
             // choose a saturation threshold (e.g., 99.9%)
             double saturationThreshold = 0.995; // 99.9%
 
-            if (totalDisciples / totalPop >= saturationThreshold) {
-                System.out.printf("Saturation reached at year %d.%n", year);
+            if (totalDisciples / totalPop >= saturationThreshold) // Okay, so I needed AI to help me answer the question better
+            {
+                System.out.printf("Target reached at year %d.%n", year);
                 System.out.printf("Year %d: population=%.0f; disciples=%.0f; pct=%.5f%n",
                                   year, totalPop, totalDisciples, totalDisciples / totalPop);
                 break;
@@ -55,7 +56,7 @@ public class GreatCommissionDemographics
             double nonDisciplesTotal = total(pop);
             if (conversionsThisYear > nonDisciplesTotal) conversionsThisYear = nonDisciplesTotal;
 
-            if (nonDisciplesTotal > 0.0 && conversionsThisYear > 0.0)
+            if (nonDisciplesTotal > 0.0 && conversionsThisYear > 0.0) // Yeah, AI helped me here
             {
                 // distribute conversions proportionally by age
                 for (int a = 0; a <= LAST_AGE; a++)
@@ -71,7 +72,7 @@ public class GreatCommissionDemographics
             double[] newPop = new double[MAX_AGE];
             double[] newDisciples = new double[MAX_AGE];
 
-            for (int a = LAST_AGE - 1; a >= 0; a--)
+            for (int a = LAST_AGE - 1; a >= 0; a--) // Didn't know what to do here, AI to the rescue
             {
                 newPop[a + 1] = pop[a];
                 newDisciples[a + 1] = disciples[a];
@@ -79,10 +80,10 @@ public class GreatCommissionDemographics
 
             // Couples at birth age after aging produce children
             double peopleAtBirthAge = newPop[BIRTH_AGE] + newDisciples[BIRTH_AGE];
-            double births = peopleAtBirthAge / 2.0; // one baby per couple on average
+            double births = peopleAtBirthAge / 2.0; // one baby per couple on average because instructions say so
             newPop[0] = births;
 
-            // Replace arrays
+            // Replace arrays because we feel like doing that
             pop = newPop;
             disciples = newDisciples;
 
@@ -97,17 +98,9 @@ public class GreatCommissionDemographics
                         year, totalPop1, totalDisciples1, totalDisciples1 / totalPop1);
             }
         }
-
-        if (year >= MAX_YEARS)
-        {
-            double totalPop = total(pop) + total(disciples);
-            double totalDisciples = total(disciples);
-            System.out.printf("Reached max years (%d). population=%.0f, disciples=%.0f, pct=%.6f%n",
-                    MAX_YEARS, totalPop, totalDisciples, totalDisciples / totalPop);
-        }
     }
 
-    static double total(double[] arr)
+    static double total(double[] arr) // And this...why did AI put this here? I think this is to return the values.
     {
         double s = 0.0;
         for (double v : arr) s += v;
